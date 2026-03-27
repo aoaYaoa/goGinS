@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: go-gin-starter
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: SERVER_PORT
+        value: 10000
+      - key: SERVER_MODE
+        value: release
+      - key: DATABASE_HOST
+        sync: false
+      - key: DATABASE_PORT
+        value: 5432
+      - key: DATABASE_NAME
+        sync: false
+      - key: DATABASE_USER
+        sync: false
+      - key: DATABASE_PASS
+        sync: false
+      - key: DATABASE_SSL_MODE
+        value: require
+      - key: MIGRATIONS_PATH
+        value: migrations
+      - key: JWT_SECRET
+        generateValue: true
+      - key: REDIS_ADDR
+        sync: false
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: REDIS_TLS
+        value: "true"
+      - key: METRICS_ALLOWED_IPS
+        sync: false
+      - key: OTEL_SERVICE_NAME
+        value: go-gin-starter
+      - key: OTEL_ENDPOINT
+        sync: false
+      - key: STORAGE_TYPE
+        value: local
+      - key: LOCAL_STORAGE_DIR
+        value: uploads
+      - key: STORAGE_PUBLIC_BASE_URL
+        value: /uploads
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false

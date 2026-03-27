@@ -1,0 +1,68 @@
+run:
+  timeout: 5m
+  tests: true
+  skip-dirs:
+    - vendor
+    - tmp
+    - docs
+
+linters:
+  enable:
+    - errcheck      # 检查未处理的错误
+    - gosimple      # 简化代码
+    - govet         # Go 官方检查工具
+    - ineffassign   # 检测无效赋值
+    - staticcheck   # 静态分析
+    - unused        # 检测未使用的代码
+    - gofmt         # 格式检查
+    - goimports     # import 排序
+    - misspell      # 拼写检查
+    - revive        # 代码风格检查
+    - gosec         # 安全检查
+    - bodyclose     # HTTP body 关闭检查
+    - noctx         # HTTP 请求需要 context
+    - sqlclosecheck # SQL rows/stmt 关闭检查
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  
+  govet:
+    check-shadowing: true
+  
+  revive:
+    rules:
+      - name: exported
+        disabled: false
+      - name: var-naming
+        disabled: false
+      - name: package-comments
+        disabled: true  # 暂时禁用包注释检查
+  
+  gosec:
+    excludes:
+      - G104  # 允许某些错误不检查（如 defer Close()）
+      - G304  # 允许文件路径来自变量
+
+issues:
+  exclude-rules:
+    # 测试文件放宽检查
+    - path: _test\.go
+      linters:
+        - errcheck
+        - gosec
+        - revive
+    
+    # 自动生成的文件跳过检查
+    - path: docs/
+      linters:
+        - all
+  
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true

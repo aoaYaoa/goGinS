@@ -1,0 +1,9 @@
+.git
+.env
+.env.*
+*.md
+docs/
+tmp/
+.air.toml
+docker-compose*.yml
+render.yaml

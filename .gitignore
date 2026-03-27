@@ -1,0 +1,30 @@
+# 环境变量
+.env
+*.env.local
+
+# 编译产物
+/bin/
+*.exe
+*.out
+
+# 证书
+certs/
+
+# 数据库文件
+*.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 测试覆盖率
+coverage.out
+coverage.html
+
+# Swagger 生成文件（可选，按需取消注释）
+# docs/
