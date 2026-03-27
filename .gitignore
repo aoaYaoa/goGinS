@@ -4,6 +4,8 @@
 
 # 编译产物
 /bin/
+/server
+server
 *.exe
 *.out
 
